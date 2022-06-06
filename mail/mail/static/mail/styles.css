@@ -1,0 +1,12 @@
+textarea {
+    min-height: 400px;
+}
+
+body{
+    background-color: rgb(226, 226, 226);
+}
+
+#compose-body{
+    height: 200px;
+}
+
