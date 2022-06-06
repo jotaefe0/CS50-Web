@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>{{ category }}</h2>
+
+    {% for category in categories %}
+    <p><a href="../{{ category.itemname }}">{{ category.itemname }}</a></p>
+    <p>Published by: {{ category.owner.username }}</p>
+    <p>Description: {{ category.description }}</p>
+    <p>Current Bid: {{ category.currentbid }}$</p>
+    <img class="image" src="{{ category.imgurl }}" title="{{ action.itemname }}">
+    <hr>
+    {% endfor %}
+{% endblock %}

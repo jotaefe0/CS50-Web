@@ -1,0 +1,72 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}    
+
+    {% for list in alisting %}
+    <h1>{{ list.itemname }}</h1>
+    <p>Published by: {{ list.owner.username }}</p>
+    <p>Description: {{ list.description }}</p>
+    <p>Current Bid: {{ list.currentbid }}$</p>
+    <img class="image" src="{{ list.imgurl }}" title="{{ list.itemname }}">
+    <hr>
+    {% endfor %}
+
+    {% if isactive %}
+    <div class="row">
+        <div class="column">
+            <form action="{% url 'listing' listingurl %}" method="post">
+            {% csrf_token %}
+            <input class="btn btn-secondary" type="submit" value="{{addremovevalue}} Watchlist" name={{addremove}}>
+        </form>
+    </div>
+        <div class="column"> 
+            <form action="{% url 'listing' listingurl %}" method="post">
+                {% csrf_token %}
+                <input class="form-control2" autofocus type="number" name="Bid" placeholder="$" required min=0>
+                <input class="btn btn-danger" type="submit" value="Place Bid">
+            </form>
+        </div>
+        <div class="column">  
+            {% if owner %}
+            <form action="{% url 'listing' listingurl %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="Close Listing" name="close">
+            </form>
+            {% endif %}
+        </div>
+      </div>
+    
+
+   
+
+  
+
+    {% else %}
+    <form action="{% url 'listing' listingurl %}" method="post">
+        {% csrf_token %}
+        <input class="btn btn-secondary" type="submit" value="{{addremovevalue}} Watchlist" name={{addremove}}>
+    </form>
+    This Listing is Closed. {{ winner }} with a bid of {{ highestbid }}!
+    {% endif %}
+   
+    
+    {{ message }}
+    
+   <div >
+       
+       <h1 class="comments">Comments</h1>
+       {% for comment in comments %}
+       
+        {{ comment.itemcomment }}
+        <hr>
+       {% endfor %}
+       <form action="{% url 'listing' listingurl %}" method="post">
+        {% csrf_token %}
+        <textarea class="form-control" autofocus type="text" name="comment" placeholder="Type comment here" required></textarea>
+        <input class="btn btn-secondary" type="submit" value="Submit Comment">
+        </form>
+
+   </div>
+
+
+{% endblock %}

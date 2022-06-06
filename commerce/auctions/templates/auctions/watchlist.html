@@ -1,0 +1,13 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}    
+    <h1>Watchlist <i class="bi bi-eye"></i></h1>
+    {% for list in watchlist %}
+    <h4><a href="{{ list.item.itemname }}">{{ list.item.itemname }} (Actual bid: {{ list.item.currentbid }}$)</a></h4>
+    <!-- <p>{{ list.item.owner }}</p>
+    <p>{{ list.item.description }}</p>
+    <p>{{ list.item.currentbid }}$</p>
+    <img src="{{ list.item.imgurl }}" title="{{ list.item.itemname }}"> -->
+    {% endfor %}
+   <h7>{{ message }}</h7>
+{% endblock %}

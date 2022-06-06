@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    {% for auction in auctions %}
+    <p><a href="{{ auction.itemname }}">{{ auction.itemname }}</a></p>
+    <p>Published by: {{ auction.owner.username }}</p>
+    <p>Description: {{ auction.description }}</p>
+    <p>Current Bid: {{ auction.currentbid }}$</p>
+    <img class="image" src="{{ auction.imgurl }}" title="{{ auction.itemname }}">
+    <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,46 @@
+body {
+    padding: 10px;
+}
+
+.row{
+    margin: 1%;
+}
+
+.comments{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.column {
+    float: left;
+    width: 15%;
+  }
+  
+
+.form-control
+{
+    max-width: 50%;
+}
+
+.image{
+    max-width: 15%;
+    height: auto;
+}
+
+.form-control2
+{
+    max-width: 50px;
+    min-width: 50px;
+}
+
+.btn-secondary{
+    background-color: rgb(72, 88, 233);
+}
+
+.btn{
+    border-color: cornsilk;
+}
+
+.btn:hover{
+    background-color: rgb(177, 185, 255);
+    border-color: cornsilk;
+}
